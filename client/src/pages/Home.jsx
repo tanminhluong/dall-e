@@ -22,7 +22,7 @@ const Home = () => {
     const fetchPosts = async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get("http://localhost:8080/api/posts");
+        const { data } = await axios.get("https://dall-e-m084.onrender.com");
 
         if (data) setAllPosts(data.data.reverse());
       } catch (error) {
