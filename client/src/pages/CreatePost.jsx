@@ -27,7 +27,7 @@ const CreatePost = () => {
       setLoading(true);
       try {
         const { data } = await axios.post(
-          "https://dall-e-m084.onrender.com",
+          "https://dall-e-m084.onrender.com/api/posts",
           {
             name: form.name,
             prompt: form.prompt,
@@ -67,7 +67,7 @@ const CreatePost = () => {
       try {
         setGeneratingImg(true);
         const { data } = await axios.post(
-          "https://dall-e-m084.onrender.com",
+          "https://dall-e-m084.onrender.com/api/dalles",
           {
             prompt: form.prompt,
           },
