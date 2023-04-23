@@ -5,6 +5,8 @@ import connectDB from "./configs/db.js";
 
 import postRoutes from "./routes/postRoutes.js";
 import dalleRoutes from "./routes/dalleRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+import likeRoute from "./routes/likeRoute.js";
 
 dotenv.config();
 const app = express();
@@ -14,6 +16,8 @@ app.use(express.json({ limit: "50mb" }));
 
 app.use("/api/posts", postRoutes);
 app.use("/api/dalles", dalleRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/like", likeRoute);
 app.get("/", async (req, res) => {
   res.send("hello");
 });

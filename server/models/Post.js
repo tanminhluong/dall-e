@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const Post = mongoose.Schema(
+const Post = new mongoose.Schema(
   {
     name: {
       type: "string",
@@ -14,10 +14,24 @@ const Post = mongoose.Schema(
       type: "string",
       required: true,
     },
+    postedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+    liked: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    comments: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment",
+      },
+    ],
   },
-  {
-    timestamp: true,
-  }
+  { timestamps: true }
 );
 
 const PostSchema = mongoose.model("Post", Post);
