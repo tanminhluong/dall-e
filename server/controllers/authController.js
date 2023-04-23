@@ -24,7 +24,7 @@ const register = async (req, res) => {
     const { password, ...others } = savedUser._doc;
     res.status(201).json({ ...others });
   } catch (error) {
-    res.status(500).json(err);
+    res.status(500).json(error);
   }
 };
 
