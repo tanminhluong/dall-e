@@ -9,6 +9,7 @@ const FormField = ({
   handleChange,
   handleSurpriseMe,
   isSurpriseMe,
+  handleKeyDown,
 }) => {
   return (
     <div>
@@ -30,6 +31,7 @@ const FormField = ({
         )}
       </div>
       <input
+        onKeyDown={handleKeyDown}
         type={type}
         id={name}
         name={name}

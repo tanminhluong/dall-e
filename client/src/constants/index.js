@@ -45,4 +45,9 @@ export const surpriseMePrompts = [
   "Synthwave aeroplane",
   "A man wanders through the rainy streets of Tokyo, with bright neon signs, 50mm",
   "A Space Shuttle flying above Cape Town, digital art",
+  "A T-Rex with red eye walking though the lake, fantastic",
+  "Lionel Messi with the World Cup trophy, photography",
+  "tyriel archangel, king shamn , avatar , swords , angel wings . 4k , unreal engine --wallpaper",
+  "dense woodland landscape, ::0.4 , English forest, Irish forest, scottish forest, perspective, folklore,King Arthur, Lord of the Rings, Game of Thrones. ultra photoreal , photographic, concept art, cinematic lighting, cinematic composition, rule of thirds , mysterious, eerie, cinematic lighting, ultra-detailed, ultrarealistic, photorealism, 8k, octane render, Albert Bierstadt ",
+  "king shamn , avatar , swords , angel wings . 4k , unreal engine",
 ];
