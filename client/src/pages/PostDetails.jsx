@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Comments, FormField, Header } from "../components";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import moment from "moment";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { BiMessageRounded } from "react-icons/bi";
 import LikeButton from "../components/LikeButton";
