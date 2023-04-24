@@ -17,7 +17,6 @@ const RenderCards = ({ data, title }) => {
 };
 
 const Home = () => {
-  const [allPosts, setAllPosts] = useState(null);
   const [searchText, setSearchText] = useState("");
   const [searchedResults, setSearchedResults] = useState(null);
   const [searchTimeout, setSearchTimeout] = useState(null);
@@ -66,10 +65,10 @@ const Home = () => {
     }
   };
 
-  const followingId = userInfo.followings.map((user) => user._id);
+  const followingId = userInfo?.followings.map((user) => user._id);
 
   const followingPosts = posts.filter((item) => {
-    return followingId.includes(item.postedBy._id);
+    return followingId?.includes(item.postedBy._id);
   });
 
   return (
