@@ -21,6 +21,7 @@ const Home = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedResults, setSearchedResults] = useState(null);
   const [searchTimeout, setSearchTimeout] = useState(null);
+  const [following, setFollowing] = useState(false);
 
   const { posts, status, loading } = useSelector((state) => state.post);
   const { userInfo } = useSelector((state) => state.user);
@@ -49,6 +50,14 @@ const Home = () => {
     );
   };
 
+  const handleShowFollowing = (isFollowing) => {
+    if (isFollowing) {
+      setFollowing(true);
+    } else {
+      setFollowing(false);
+    }
+  };
+
   const handleCreatePostClick = (e) => {
     if (userInfo) {
       navigate("/create-post");
@@ -56,6 +65,12 @@ const Home = () => {
       navigate("/auth/login");
     }
   };
+
+  const followingId = userInfo.followings.map((user) => user._id);
+
+  const followingPosts = posts.filter((item) => {
+    return followingId.includes(item.postedBy._id);
+  });
 
   return (
     <>
@@ -84,6 +99,29 @@ const Home = () => {
             />
           </div>
 
+          <div className="flex items-center w-full mt-5 ">
+            <div
+              onClick={() => handleShowFollowing(false)}
+              className={
+                following
+                  ? "flex items-center justify-center flex-initial w-[50%] text-xl font-light cursor-pointer "
+                  : "flex items-center justify-center flex-initial w-[50%] text-xl font-light  border-b border-b-slate-900 cursor-pointer "
+              }
+            >
+              Community
+            </div>
+            <div
+              onClick={() => handleShowFollowing(true)}
+              className={
+                following
+                  ? "flex items-center justify-center w-[50%] flex-initial text-xl font-light border-b border-b-slate-900 cursor-pointer "
+                  : "flex items-center justify-center w-[50%] flex-initial text-xl font-light cursor-pointer "
+              }
+            >
+              Following
+            </div>
+          </div>
+
           <div className="mt-10">
             {loading ? (
               <div className="flex justify-center items-center">
@@ -104,7 +142,10 @@ const Home = () => {
                       title="No search results found"
                     />
                   ) : (
-                    <RenderCards data={posts} title="No posts found" />
+                    <RenderCards
+                      data={following ? followingPosts : posts}
+                      title="No posts found"
+                    />
                   )}
                 </div>
               </>

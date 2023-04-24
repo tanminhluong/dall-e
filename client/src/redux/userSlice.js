@@ -98,6 +98,7 @@ const userSlice = createSlice({
         state.loading = false;
         state.users[state.users.findIndex((item) => item._id === payload._id)] =
           payload;
+
         state.success = true;
       })
       .addCase(followAUser.rejected, (state, { payload }) => {
