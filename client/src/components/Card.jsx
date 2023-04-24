@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { userRequest } from "../utils/requestMethods";
 import { Link } from "react-router-dom";
 import { Modal } from "./index";
-import { deletePost } from "../redux/postActions";
+import { deletePost, likePost } from "../redux/postActions";
 
 const Card = ({
   _id,
@@ -22,7 +22,7 @@ const Card = ({
   profileId,
 }) => {
   const { userInfo } = useSelector((state) => state.user);
-  const [totalLiked, setTotalLiked] = useState(liked);
+  // const [totalLiked, setTotalLiked] = useState(liked);
   const [show, setShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -33,15 +33,22 @@ const Card = ({
   if (userInfo) isSameId = profileId === userInfo._id;
 
   const handleLike = async (like) => {
-    if (userInfo) {
-      const { data } = await userRequest.put("/like", {
-        userId: userInfo._id,
-        postId: _id,
-        like,
-      });
+    // if (userInfo) {
+    //   const { data } = await userRequest.put("/like", {
+    //     userId: userInfo._id,
+    //     postId: _id,
+    //     like,
+    //   });
 
-      setTotalLiked(data.liked);
-    }
+    //   setTotalLiked(data.liked);
+    // }
+    dispatch(
+      likePost({
+        like,
+        postId: _id,
+        userId: userInfo._id,
+      })
+    );
   };
 
   const handleShow = () => {
@@ -113,7 +120,7 @@ const Card = ({
               <LikeButton
                 handleLike={() => handleLike(true)}
                 handleDislike={() => handleLike(false)}
-                liked={totalLiked}
+                liked={liked}
               />
               <button
                 type="button"

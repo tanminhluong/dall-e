@@ -98,6 +98,7 @@ export const updateUser = createAsyncThunk(
   }
 );
 
+// follow user
 export const followAUser = createAsyncThunk(
   "user/follow-a-user",
   async ({ profileId, followerId, follow }, { dispatch, rejectWithValue }) => {

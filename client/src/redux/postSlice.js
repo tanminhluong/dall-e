@@ -59,6 +59,14 @@ const postSlice = createSlice({
       );
       state.error = null;
     },
+
+    // like Post
+    likePostSuccess: (state, { payload }) => {
+      state.loading = false;
+      state.posts[state.posts.findIndex((item) => item._id === payload._id)] =
+        payload;
+      state.error = null;
+    },
   },
   //   extraReducers: (builder) => {
   //     builder
@@ -87,6 +95,7 @@ export const {
   createNewPostSuccess,
   updatePostComment,
   deletePostSuccess,
+  likePostSuccess,
 } = postSlice.actions;
 
 export default postSlice.reducer;

@@ -6,7 +6,7 @@ import { FiMoreHorizontal } from "react-icons/fi";
 import { BiMessageRounded } from "react-icons/bi";
 import LikeButton from "../components/LikeButton";
 import { userRequest } from "../utils/requestMethods";
-import { updatePosts } from "../redux/postActions";
+import { likePost, updatePosts } from "../redux/postActions";
 
 const PostDetails = () => {
   const { posts } = useSelector((state) => state.post);
@@ -45,6 +45,16 @@ const PostDetails = () => {
       setIsPostingComment(false);
     }
   };
+
+  const handleLike = (like) => {
+    dispatch(
+      likePost({
+        like,
+        postId: postId,
+        userId: userInfo._id,
+      })
+    );
+  };
   return (
     <>
       <Header />
@@ -75,10 +85,15 @@ const PostDetails = () => {
             <img src={currentPost.photo} alt="post photo" />
           </div>
           <div className="flex items-center gap-3 ">
-            <LikeButton />
+            <LikeButton
+              detail={true}
+              liked={currentPost.liked}
+              handleLike={() => handleLike(true)}
+              handleDislike={() => handleLike(false)}
+            />
             <BiMessageRounded
               onClick={forcusInput}
-              className="text-[20px] cursor-pointer"
+              className="text-[24px] cursor-pointer"
             />
           </div>
 

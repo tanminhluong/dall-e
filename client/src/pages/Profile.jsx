@@ -249,7 +249,7 @@ const Profile = () => {
               <Follower follower={user} key={user._id} />
             ))
           ) : (
-            <div>You haven't followed anyone</div>
+            <div>Not following</div>
           )}
         </div>
       </Modal>

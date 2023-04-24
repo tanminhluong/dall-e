@@ -112,11 +112,7 @@ const Home = () => {
           </div>
         </section>
         <div className="fixed right-0 bottom-1 z-10 ">
-          <Tooltip
-            className="bg-[#282a36]"
-            content="Create post"
-            placement="top"
-          >
+          <Tooltip placement="top">
             <button type="button" onClick={handleCreatePostClick}>
               <AiFillPlusCircle className="h-16 w-20 text-[#e469ff]" />
             </button>

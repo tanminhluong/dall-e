@@ -8,6 +8,7 @@ import {
   getAllPostsFail,
   getAllPostsStart,
   getAllPostsSuccess,
+  likePostSuccess,
   updatePostComment,
 } from "./postSlice";
 
@@ -45,6 +46,7 @@ export const createNewPost = (post) => async (dispatch) => {
   }
 };
 
+// comment
 export const updatePosts = (id, updateInfo) => async (dispatch) => {
   try {
     const { data } = await userRequest.put(`/posts/${id}`, {
@@ -69,3 +71,18 @@ export const deletePost = (id) => async (dispatch) => {
     throw new Error(error);
   }
 };
+
+export const likePost =
+  ({ like, postId, userId }) =>
+  async (dispatch) => {
+    try {
+      const { data } = await userRequest.put("/like", {
+        userId,
+        postId,
+        like,
+      });
+      dispatch(likePostSuccess(data));
+    } catch (err) {
+      throw new Error(err.response.data);
+    }
+  };

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { MdFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
 import { useSelector } from "react-redux";
 
-const LikeButton = ({ liked, handleLike, handleDislike }) => {
+const LikeButton = ({ liked, handleLike, handleDislike, detail }) => {
   const [alreadyLiked, setAlreadyLiked] = useState(false);
   const { userInfo } = useSelector((state) => state.user);
   const filterLikes = liked?.filter((item) => item === userInfo?._id);
@@ -17,23 +17,37 @@ const LikeButton = ({ liked, handleLike, handleDislike }) => {
 
   return (
     <div className="flex gap-0.5">
-      <div className="flex justify-center items-center cursor-pointer">
+      <div className="flex justify-center items-center cursor-pointer mr-2 gap-2">
         {alreadyLiked ? (
           <div
-            className="bg-primary text-[#ebdce4] rounded-full p-[2px] md:p-4  "
+            className={
+              detail
+                ? "bg-primary rounded-full p-[2px]"
+                : "bg-primary text-[#ebdce4] rounded-full p-[2px]"
+            }
             onClick={handleDislike}
           >
             <MdFavorite className="text-lg md:text-2xl" />
           </div>
         ) : (
           <div
-            className="bg-primary rounded-full md:p-4 text-[#ebdce4] "
+            className={
+              detail
+                ? "bg-primary rounded-full p-[2px]"
+                : "bg-primary text-[#ebdce4] rounded-full p-[2px]"
+            }
             onClick={handleLike}
           >
-            <MdOutlineFavoriteBorder className="text-[12px] md:text-2xl" />
+            <MdOutlineFavoriteBorder className="text-lg md:text-2xl" />
           </div>
         )}
-        <p className="text-md font-semibold text-[#ebdce4] ">
+        <p
+          className={
+            detail
+              ? "text-md font-semibold"
+              : "text-md font-semibold text-[#ebdce4] "
+          }
+        >
           {liked?.length || 0}
         </p>
       </div>

@@ -10,7 +10,6 @@ const Follower = ({ follower }) => {
     follower?.followers.filter((item) => item === userInfo._id).length > 0
       ? true
       : false;
-  console.log(isFollowing);
   const handleFollow = (follow) => {
     dispatch(
       followAUser({
