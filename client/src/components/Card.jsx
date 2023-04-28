@@ -8,7 +8,7 @@ import LikeButton from "./LikeButton";
 import { useDispatch, useSelector } from "react-redux";
 import { userRequest } from "../utils/requestMethods";
 import { Link } from "react-router-dom";
-import { Modal } from "./index";
+import { LazyImage, Modal } from "./index";
 import { deletePost, likePost } from "../redux/postActions";
 
 const Card = ({
@@ -70,11 +70,12 @@ const Card = ({
         }
       >
         <Link to={`/posts/${_id}`}>
-          <img
+          {/* <img
             src={photo}
             alt={prompt}
             className="w-full h-auto object-cover rounded-xl"
-          />
+          /> */}
+          <LazyImage src={photo} alt={prompt} />
         </Link>
         {(type !== "card") & isSameId ? (
           <div

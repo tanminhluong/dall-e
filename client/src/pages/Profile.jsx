@@ -72,7 +72,7 @@ const Profile = () => {
     }
   };
 
-  const handleChangeAvatar = async () => {
+  const handleChangeAvatar = () => {
     setLoading(true);
     if (file) {
       dispatch(

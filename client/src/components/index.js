@@ -5,5 +5,15 @@ import Header from "./Header";
 import Comments from "./Comments";
 import Modal from "./Modal";
 import Follower from "./Follower";
+import LazyImage from "./LazyImage";
 
-export { Card, FormField, Loader, Header, Comments, Modal, Follower };
+export {
+  Card,
+  FormField,
+  Loader,
+  Header,
+  Comments,
+  Modal,
+  Follower,
+  LazyImage,
+};
