@@ -42,7 +42,7 @@ export const createNewPost = (post) => async (dispatch) => {
     dispatch(createNewPostSuccess(data.data));
     dispatch(getAllPosts());
   } catch (error) {
-    dispatch(createNewPostFail(error.response.data.message));
+    dispatch(createNewPostFail(error.response.data));
   }
 };
 
