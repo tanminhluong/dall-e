@@ -6,7 +6,7 @@ import { userRequest } from "../utils/requestMethods";
 // import { Modal } from "flowbite-react";
 import FileBase from "react-file-base64";
 import { followAUser, updateUser } from "../redux/userActions";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const RenderCards = ({ profileId, data, title }) => {
   if (data?.length > 0)
@@ -26,11 +26,12 @@ const Profile = () => {
   const [showModal, setShowModal] = useState(false);
   const [showFollowerModal, setShowFollowerModal] = useState(false);
   const [showFollowingModal, setShowFollowingModal] = useState(false);
-  const [imgURL, setImgURL] = useState(userInfo.avatar);
+  const [imgURL, setImgURL] = useState(userInfo?.avatar);
   const [file, setFile] = useState(null);
   const [base64String, setBase64String] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { profileId } = useParams();
 
   //logic to find profile that give by the url
@@ -38,12 +39,12 @@ const Profile = () => {
   const userPosts = posts.filter((item) => item.postedBy._id === profileId);
 
   const isFollowing =
-    profile.followers.filter((follower) => follower._id === userInfo._id)
+    profile.followers.filter((follower) => follower._id === userInfo?._id)
       .length > 0
       ? true
       : false;
 
-  let isSameId = profileId === userInfo._id;
+  let isSameId = profileId === userInfo?._id;
 
   const onImgChange = async (e) => {
     const [f] = e.target.files;
@@ -90,6 +91,7 @@ const Profile = () => {
   };
 
   const handleFollow = (follow) => {
+    if (!userInfo) navigate("/auth/login");
     dispatch(
       followAUser({
         profileId,

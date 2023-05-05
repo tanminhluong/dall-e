@@ -33,15 +33,7 @@ const Card = ({
   if (userInfo) isSameId = profileId === userInfo._id;
 
   const handleLike = async (like) => {
-    // if (userInfo) {
-    //   const { data } = await userRequest.put("/like", {
-    //     userId: userInfo._id,
-    //     postId: _id,
-    //     like,
-    //   });
-
-    //   setTotalLiked(data.liked);
-    // }
+    if (!userInfo) alert("Please login to like post");
     dispatch(
       likePost({
         like,
@@ -75,7 +67,7 @@ const Card = ({
             alt={prompt}
             className="w-full h-auto object-cover rounded-xl"
           /> */}
-          <LazyImage src={photo} alt={prompt} />
+          <LazyImage id={_id} src={photo} alt={prompt} />
         </Link>
         {(type !== "card") & isSameId ? (
           <div

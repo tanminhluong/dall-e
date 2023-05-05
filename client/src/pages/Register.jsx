@@ -30,7 +30,7 @@ const Register = () => {
     }
   };
   return (
-    <section className="max-w-xl mx-auto">
+    <section className="max-w-xl mx-auto px-4">
       <div>
         <h1 className="font-extrabold text-[32px] text-[#222328]">Sign up</h1>
         <p className="mt-2 text-[#666e75] text-[16px] max-w-[500px]">
